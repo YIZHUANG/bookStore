@@ -1,35 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>BookList</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>BookList</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+
 <body>
-	<h1>editBook</h1>
+  <h1>editBook</h1>
   <div>
-		<form th:object="${book}" th:action="@{../save}" action="#" method="post">
-		<input type="hidden" th:field="*{id}" class="form-control"/>
-		    <label for="Aauthor">Author</label>
-		    <input id="Aauthor" type="text" th:field="*{author}" />
-		    <label for="Ttitle">Title</label>
-		    <input type="text" id="Ttitle" th:field="*{title}"></input>
-		    <label for="Iisbn">Isbn</label>
-		    <input type="text" id="Iisbn" th:field="*{isbn}"></input>
-		    <label for="Yyear">Year</label>
-		    <input id="Yyeara" type="text" th:field="*{year}"></input>
-		   <div style="clear: both; display: block; height: 10px;"></div>	
-		    <label for="depList">Department</label>
-	  <select id="depList" th:field="*{department}" class="form-control">
+    <form th:object="${book}" th:action="@{../save}" action="#" method="post">
+      <input type="hidden" th:field="*{id}" class="form-control" />
+      <label for="Aauthor">Author</label>
+      <input id="Aauthor" type="text" th:field="*{author}" />
+      <label for="Ttitle">Title</label>
+      <input type="text" id="Ttitle" th:field="*{title}"></input>
+      <label for="Iisbn">Isbn</label>
+      <input type="text" id="Iisbn" th:field="*{isbn}"></input>
+      <label for="Yyear">Year</label>
+      <input id="Yyeara" type="text" th:field="*{year}"></input>
+      <div style="clear: both; display: block; height: 10px;"></div>
+      <label for="depList">Department</label>
+      <select id="depList" th:field="*{department}" class="form-control">
 	  <option th:each="department:${departments}" th:value="${department.DepartmentId}" th:text="${department.name}">
 	  </option>
 	  </select>
-	  <div style="clear: both; display: block; height: 10px;"></div>
-	   <input type="submit" value="Save"></input>
-	</form>
-    	
-    
-     </div>
-	  
+      <div style="clear: both; display: block; height: 10px;"></div>
+      <input type="submit" value="Save"></input>
+    </form>
+  </div>
+
 </body>
+
 </html>

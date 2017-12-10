@@ -6,8 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import java.util.List;
 @Entity
+@Table(name="Department")
 public class Department {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
@@ -16,8 +19,6 @@ private String name;
 
 @OneToMany(cascade =CascadeType.ALL, mappedBy = "department")
 private List <Book> book;
-
-
 
 public Department(){}
 public Department(String name){

@@ -17,36 +17,36 @@ import fi.haagahelia.course.domain.DepartmentRepository;
 @Controller
 public class BookController {
 	@Autowired
-	private BookRepository repository; 
+	private BookRepository repository;
 	@Autowired
 	private DepartmentRepository drepository;
     @RequestMapping(value="/BookList")
-    public String BookList(Model model) {	
+    public String BookList(Model model) {
         model.addAttribute("books", repository.findAll());
         return "BookList";
     }
-  
-   
+
+
     @RequestMapping(value="/login")
     public String login(){
     	return "login";
     }
-   
+
     @RequestMapping(value="/add")
     public String addBook(Model model){
 
 		model.addAttribute("book",new Book());
 		model.addAttribute("departments",drepository.findAll());
     	return "AddBook";
-    	
+
     }
-    
+
     @RequestMapping(value="/save",method=RequestMethod.POST)
     public String Save(Book book){
     repository.save(book);
     	return "redirect:BookList";
     }
-    
+
     @RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
     public String delete(@PathVariable("id") Long bookid,Model model){
     	repository.delete(bookid);
@@ -58,17 +58,14 @@ public String edit(@PathVariable("id") Long bookid,Model model){
 	model.addAttribute("departments",drepository.findAll());
 	return "editBook";
 }
-    
+
 @RequestMapping(value="/books",method=RequestMethod.GET)
 public @ResponseBody List<Book> BookRest(){
 	return (List<Book>) repository.findAll();
-	
+
 }
 @RequestMapping(value="/books/{id}",method=RequestMethod.GET)
 	public @ResponseBody Book BookIdRest(@PathVariable("id") Long bookid){
 	return repository.findOne(bookid);
 }
-
-    
-    }   
-
+}   

@@ -7,14 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
-
+@Table(name="Book")
 public class Book {
-
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
 private Long Id;
 private String title;
 private String author;
@@ -35,20 +35,15 @@ public Book(String title,String author,int year,String isbn,double price,Departm
 	this.isbn=isbn;
 	this.price=price;
 	this.department=department;
-	
 }
+
 public Long getId() {
 	return Id;
 }
 
-
 public void setId(Long id) {
 	Id = id;
 }
-
-
-
-
 
 public Department getDepartment() {
 	return department;
